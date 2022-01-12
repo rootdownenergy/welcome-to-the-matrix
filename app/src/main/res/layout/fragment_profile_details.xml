@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileDetailsCoordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/profileDetailCard"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="265dp"
+                android:paddingHorizontal="@dimen/row_item_margin_horizontal"
+                android:paddingTop="@dimen/row_item_margin_vertical"
+                tools:ignore="UnusedAttribute">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repo_detail_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/repo_name_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="android-architecture" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repo_detail_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="10"
+                    android:paddingVertical="@dimen/row_item_margin_vertical"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="@dimen/repo_description_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repo_detail_name"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="What is Root Down .Green? We are a platform for the involvement of mass sociological implementation cohesion mechanisms" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repo_detail_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/row_item_margin_vertical"
+                    android:text=""
+                    android:textSize="@dimen/repo_description_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repo_detail_description"
+                    tools:ignore="RtlCompat" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_detail_geo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="72dp"
+                    android:text="Map"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.959"
+                    app:layout_constraintStart_toEndOf="@+id/repo_detail_city"
+                    app:layout_constraintTop_toBottomOf="@+id/repo_detail_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_lat_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repo_detail_description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_lng_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repo_detail_description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/materialToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/row_item_margin_horizontal"
+            android:paddingTop="@dimen/row_item_margin_vertical"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/submit"
+                app:srcCompat="@drawable/ic_baseline_save_alt_24" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

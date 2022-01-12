@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="btnGeo"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="profile"
+            type="com.rootdown.dev.paging_v3_1.api.UserProfile" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profileCard"
+        android:clickable="true"
+        android:onClick="@{clickListener}"
+        android:focusable="true"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/row_item_margin_horizontal"
+            android:paddingTop="@dimen/row_item_margin_vertical"
+            tools:ignore="UnusedAttribute">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtCompanyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{profile.company_name}"
+                android:textColor="@color/titleColor"
+                android:textSize="@dimen/repo_name_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="android-architecture" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/row_item_margin_vertical"
+                android:text="@{profile.state}"
+                android:textSize="@dimen/repo_description_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/txtCompanyName"
+                app:layout_constraintTop_toBottomOf="@+id/txtCompanyName"
+                tools:ignore="RtlCompat" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{profile.city}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtCompanyName"
+                app:layout_constraintTop_toBottomOf="@+id/txtCompanyName" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

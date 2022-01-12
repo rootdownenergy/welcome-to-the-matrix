@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_star"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_star"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/mapsFragment"
+        android:icon="@drawable/ic_star"
+        android:title="@string/title_activity_maps" />
+
+    <item
+        android:id="@+id/nav_user_strains"
+        android:icon="@drawable/ic_star"
+        android:title="Saved Strains" />
+
+    <item
+        android:id="@+id/nav_user_profiles"
+        android:icon="@drawable/ic_star"
+        android:title="Saved Profiles" />
+
+</menu>
