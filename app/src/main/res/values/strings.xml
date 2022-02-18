@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HTW</string>
+    <string name="search_hint">Character Name</string>
+    <string name="no_results">No results 😓</string>
+    <string name="unknown">\?</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading</string>
+    <string name="title_home">Home</string>
+    <string name="character_repo">character</string>
+    <string name="character">Character</string>
+</resources>
