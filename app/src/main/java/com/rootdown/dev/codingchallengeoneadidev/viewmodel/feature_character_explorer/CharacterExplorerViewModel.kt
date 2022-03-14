@@ -27,12 +27,9 @@ class CharacterExplorerViewModel(private val  repo: CharacterImpl) : ViewModel()
             .map {
                 it.insertSeparators<UiModel.CharItem, UiModel> { before, after ->
                     if (before == null) {
-                        // we're at the beginning of the list
-                        //return@insertSeparators UiModel.SeparatorItem("${after.roundedStarCount}0.000+ stars")
                         return@insertSeparators null
                     }
                     if (after == null) {
-                        // we're at the end of the list
                         return@insertSeparators null
                     }
                     if(before.roundedCount > after.roundedCount)

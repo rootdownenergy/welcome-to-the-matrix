@@ -19,7 +19,8 @@ data class BreakingBadChar(
     @SerializedName("status") val status: String = "",
     @SerializedName("nickname") val nickname: String = "",
     @SerializedName("portrayed") val portrayed: String = "",
-    @SerializedName("category") val category: String = ""
+    @SerializedName("category") val category: String = "",
+    @SerializedName("appearance") val appearance: MutableList<String> = mutableListOf()
 ) : Parcelable
 @Entity(tableName = "remote_keys")
 data class RemoteKeys(
@@ -45,6 +46,19 @@ class ListStringConverter {
     }
     @TypeConverter
     fun fromList(list: MutableList<String?>?): String {
+        val gson = Gson()
+        return gson.toJson(list)
+    }
+}
+class ListIntConverter {
+    @TypeConverter
+    fun fromInt(value: Int?): MutableList<Int> {
+        val listType = object :
+            TypeToken<ArrayList<Int?>?>() {}.type
+        return Gson().fromJson(value.toString(), listType)
+    }
+    @TypeConverter
+    fun fromList(list: MutableList<Int?>?): String? {
         val gson = Gson()
         return gson.toJson(list)
     }

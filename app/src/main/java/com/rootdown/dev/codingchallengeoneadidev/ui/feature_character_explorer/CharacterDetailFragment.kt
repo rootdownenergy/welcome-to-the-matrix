@@ -13,10 +13,6 @@ class CharacterDetailFragment: Fragment() {
 
     private lateinit var binding: FragmentSearchCharacterBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

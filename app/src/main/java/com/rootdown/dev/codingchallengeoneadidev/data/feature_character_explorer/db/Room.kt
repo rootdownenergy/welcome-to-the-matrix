@@ -11,7 +11,7 @@ import androidx.room.TypeConverters
     version = 1,
     exportSchema = false
 )
-@TypeConverters(ListStringConverter::class)
+@TypeConverters(ListStringConverter::class, ListIntConverter::class)
 abstract class BreakingBadAppDatabase : RoomDatabase() {
     abstract fun  characterDao(): CharacterDao
     abstract fun remoteKeysDao(): RemoteKeysDao
