@@ -4,20 +4,19 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
 }
 
-
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdk 32
+
     defaultConfig {
-        applicationId "com.rootdown.dev.paging_v3_1"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
-        versionCode 18
-        versionName '2.7'
+        applicationId "com.rootdown.dev.codingchallengeoneadidev"
+        minSdk 26
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -44,106 +43,103 @@ android {
 }
 
 dependencies {
+    def coroutines = "1.6.0"
+    def lifecycle = "2.4.1"
+    def recycler = "1.2.1"
+    def constraint = "2.1.3"
+    def moshi_version = "1.13.0"
+    def retrofit = "2.9.0"
+    def room = "2.4.2"
+    def fragment_version = "1.4.1"
+    def paging = "3.1.1"
+    def lifecycle_version = "2.5.0-alpha06"
+    def arch_version = "2.1.0"
+    def camerax_version = "1.0.2"
     implementation fileTree(dir: 'libs')
     implementation 'androidx.annotation:annotation:1.3.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    implementation "androidx.appcompat:appcompat:$supportLibVersion"
-    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation("com.android.support:appcompat-v7:28.0.0")
+    implementation "androidx.appcompat:appcompat:1.4.1"
+    implementation "androidx.recyclerview:recyclerview:$recycler"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint"
+    implementation "com.google.android.material:material:1.5.0"
+    implementation("androidx.paging:paging-runtime-ktx:$paging")
+    implementation 'com.airbnb.android:epoxy-paging:4.6.3'
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:2.5.0-alpha01")
 
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
     // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-    implementation "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
-    // optional - ReactiveStreams support for LiveData
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion"
-
-
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    testImplementation 'junit:junit:4.12'
-    kapt "androidx.room:room-compiler:$roomVersion"
-
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    // optional - Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    testImplementation 'junit:junit:4.13.2'
+    kapt "androidx.room:room-compiler:$room"
     // Add the annotation processor if you are using Epoxy's annotations (recommended)
     kapt 'com.airbnb.android:epoxy-processor:4.6.3'
     implementation "com.airbnb.android:epoxy:4.6.3"
     implementation 'com.airbnb.android:epoxy-databinding:4.6.3'
-    //implementation 'com.airbnb.android:epoxy-paging:4.6.3'
-    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
-
-
     // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.12.0"
-
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:retrofit-mock:$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     // Dynamic Feature Module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.4.2"
     // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:2.3.3"
-
-
+    androidTestImplementation "androidx.navigation:navigation-testing:2.4.2"
     // glide for images
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    kapt 'com.github.bumptech.glide:compiler:4.12.0'
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.2"
-
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    kapt 'com.github.bumptech.glide:compiler:4.13.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.20"
     // Android KTX
-    implementation 'androidx.core:core-ktx:1.6.0'
-
-
+    implementation 'androidx.core:core-ktx:1.7.0'
     // KTX for the Maps SDK for Android Utility Library
     implementation 'com.google.maps.android:maps-utils-ktx:3.2.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.android.gms:play-services-location:19.0.1'
-
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
-
-
     // moshi for parsing the JSON format
-    def moshi_version = "1.11.0"
-    implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    implementation "com.squareup.moshi:moshi:1.13.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     // KTX for the Maps SDK for Android library
     implementation 'com.google.maps.android:maps-ktx:3.2.0'
-
     //hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
-
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
-
-    implementation 'com.android.support:design:28.0.0'
-    //implementation 'com.google.android.gms:play-services-places:17.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-
-    implementation 'com.airbnb.android:lottie:4.2.1'
-    implementation 'com.android.support:design:28.0.0'
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
+    implementation("androidx.security:security-crypto:1.0.0")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
+
 }
